@@ -189,7 +189,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
 
     private function handlePrice($price, $item)
     {
-        $formatted_price = number_format((float)$price, 2, '.', '') . ' ZAR';
+        $formatted_price = number_format((float)$price, 2, '.', '') . ' EUR';
         log_debug('Adding price to XML: ' . $formatted_price);
         try {
             if (!empty($formatted_price)) {
