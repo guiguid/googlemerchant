@@ -13,4 +13,4 @@ After installation, configure the module to set the feed URL, which you can use 
 
 ## Usage
 
-The product feed will be available at `http://yourshop.com/googlemerchant/feed`.
+The product feed will be available at `http://yourshop.com/module/googlemerchant/feed`.
