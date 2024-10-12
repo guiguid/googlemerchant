@@ -149,32 +149,32 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
 
         foreach ($products as $product) {
             $item = $channel->addChild('g:item');
-            $item->addChild('g:id', htmlspecialchars($product['id_product']));
-            $item->addChild('g:title', htmlspecialchars($product['name']));
-            $item->addChild('g:link', htmlspecialchars($this->context->link->getProductLink($product['id_product'], $product['link_rewrite'])));
-            
-            $this->handlePrice($product['price'], $item);
-            $this->handleImageLink($product, $item);
-            $this->handleAvailability($product['quantity'], $item);
-
-            $item->addChild('g:brand', htmlspecialchars($product['manufacturer_name']) ?: 'Unknown');
-            if (!empty($product['ean13']) && strtolower($product['ean13']) != 'null') {
-                $item->addChild('g:gtin', htmlspecialchars($product['ean13']));
-            }
-            $item->addChild('g:mpn', htmlspecialchars($product['id_product']));
-            $item->addChild('g:condition', htmlspecialchars($product['condition']));
-
-            // Additional fields expected by Google
-            
-            $item->addChild('g:google_product_category', $this->getGoogleCategory($product['id_category_default']));
-            $item->addChild('g:shipping_weight', htmlspecialchars($product['weight']) . ' kg');
-                        // Clean HTML-escaped characters from the description
+            $item->addChild('title', htmlspecialchars($product['name']));
+            $item->addChild('link', htmlspecialchars($this->context->link->getProductLink($product['id_product'], $product['link_rewrite'])));
+                                    // Clean HTML-escaped characters from the description
             $cleaned_description = str_replace(
                 ['&lt;', '&gt;', '&amp;'], 
                 ['<', '>', '&'], 
                 $product['description']
             );
-            $item->addChild('g:description', htmlspecialchars(strip_tags($cleaned_description, '<p><br>')));
+            $item->addChild('description', htmlspecialchars(strip_tags($cleaned_description, '<p><br>')));
+            $item->addChild('xmlns:g:id', htmlspecialchars($product['id_product']));            
+            $this->handlePrice($product['price'], $item);
+            $this->handleImageLink($product, $item);
+            $this->handleAvailability($product['quantity'], $item);
+
+            $item->addChild('xmlns:g:brand', htmlspecialchars($product['manufacturer_name']) ?: 'Unknown');
+            if (!empty($product['ean13']) && strtolower($product['ean13']) != 'null') {
+                $item->addChild('xmlns:g:gtin', htmlspecialchars($product['ean13']));
+            }
+            $item->addChild('xmlns:g:mpn', htmlspecialchars($product['id_product']));
+            $item->addChild('xmlns:g:condition', htmlspecialchars($product['condition']));
+
+            // Additional fields expected by Google
+            
+            $item->addChild('xmlns:g:google_product_category', $this->getGoogleCategory($product['id_category_default']));
+            $item->addChild('xmlns:g:shipping_weight', htmlspecialchars($product['weight']) . ' kg');
+
         }
 
         // make XML human readable
@@ -198,7 +198,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
         log_debug('Adding price to XML: ' . $formatted_price);
         try {
             if (!empty($formatted_price)) {
-                $item->addChild('g:price', htmlspecialchars($formatted_price));
+                $item->addChild('xmlns:g:price', htmlspecialchars($formatted_price));
             } else {
                 log_debug('Price not added: ' . $formatted_price);
             }
@@ -216,7 +216,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
                 $main_image_link = 'https://via.placeholder.com/300'; // Placeholder image URL
             }
             log_debug('Adding image_link to XML: ' . htmlspecialchars($main_image_link));
-            $item->addChild('g:image_link', htmlspecialchars($main_image_link));
+            $item->addChild('xmlns:g:image_link', htmlspecialchars($main_image_link));
         } catch (Exception $e) {
             log_debug('Failed to add image_link: ' . $e->getMessage());
         }
@@ -227,7 +227,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
         $availability = $quantity > 0 ? 'in stock' : 'out of stock';
         log_debug('Adding availability to XML: ' . $availability);
         try {
-            $item->addChild('g:availability', $availability);
+            $item->addChild('xmlns:g:availability', $availability);
         } catch (Exception $e) {
             log_debug('Failed to add availability: ' . $availability);
         }
