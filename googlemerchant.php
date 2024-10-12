@@ -141,7 +141,7 @@ class googlemerchant extends Module
             return false;
         }
 
-        $xml = new SimpleXMLElement('<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel></channel></rss>');
+        $xml = new SimpleXMLElement('<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"></rss>');
 $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
         if (!isset($channel)) {
             $channel = $xml->addChild('g:channel');
