@@ -170,7 +170,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
                 $item->addChild('g:gtin', htmlspecialchars($product['ean13']));
             }
             $item->addChild('g:mpn', htmlspecialchars($product['id_product']));
-            $item->addChild('g:condition', 'new');
+            $item->addChild('g:condition', htmlspecialchars($product['condition']));
 
             // Additional fields expected by Google
             
@@ -266,13 +266,14 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
 
     public function getProducts()
     {
-        $sql = 'SELECT p.id_product, pl.name, pl.description, p.price, i.id_image, pl.link_rewrite, m.name as manufacturer_name, p.ean13, p.quantity, cl.name as category_name, p.weight, p.id_category_default
+        $sql = 'SELECT p.id_product, pl.name, pl.description, p.price, i.id_image, pl.link_rewrite, m.name as manufacturer_name, p.ean13, st.quantity, cl.name as category_name, p.weight, p.id_category_default, p.condition
                 FROM ' . _DB_PREFIX_ . 'product p
                 JOIN ' . _DB_PREFIX_ . 'product_lang pl ON p.id_product = pl.id_product AND pl.id_lang = ' . (int)$this->context->language->id . '
                 LEFT JOIN ' . _DB_PREFIX_ . 'image i ON p.id_product = i.id_product AND i.cover = 1
                 LEFT JOIN ' . _DB_PREFIX_ . 'manufacturer m ON p.id_manufacturer = m.id_manufacturer
                 LEFT JOIN ' . _DB_PREFIX_ . 'category_lang cl ON p.id_category_default = cl.id_category AND cl.id_lang = ' . (int)$this->context->language->id . '
-                WHERE p.active = 1';
+                LEFT JOIN ' . _DB_PREFIX_ . 'stock_available st ON p.id_product = st.id_product
+                WHERE p.active = 1 and p.available_for_order = 1 and p.id_category_default IN (SELECT id_category FROM ' . _DB_PREFIX_ . 'category WHERE active = 1);';
 
         return Db::getInstance()->executeS($sql);
     }
