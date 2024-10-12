@@ -243,7 +243,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
         $mapping = $this->getCategoryMapping();
 
         // Return the mapped Google category or a default value
-        return isset($mapping[$categoryName]) ? htmlspecialchars($mapping[$categoryName]) : 'Miscellaneous';
+        return isset($mapping[$categoryName]) ? htmlspecialchars($mapping[$categoryName]) : $categoryName; //'Miscellaneous';
     }
 
     private function getCategoryMapping()
