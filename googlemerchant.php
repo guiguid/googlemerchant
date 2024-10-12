@@ -153,14 +153,6 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
             $item->addChild('g:title', htmlspecialchars($product['name']));
             $item->addChild('g:link', htmlspecialchars($this->context->link->getProductLink($product['id_product'], $product['link_rewrite'])));
             
-            // Clean HTML-escaped characters from the description
-            $cleaned_description = str_replace(
-                ['&lt;', '&gt;', '&amp;'], 
-                ['<', '>', '&'], 
-                $product['description']
-            );
-            $item->addChild('g:description', htmlspecialchars(strip_tags($cleaned_description, '<p><br>')));
-            
             $this->handlePrice($product['price'], $item);
             $this->handleImageLink($product, $item);
             $this->handleAvailability($product['quantity'], $item);
@@ -176,6 +168,13 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
             
             $item->addChild('g:google_product_category', $this->getGoogleCategory($product['id_category_default']));
             $item->addChild('g:shipping_weight', htmlspecialchars($product['weight']) . ' kg');
+                        // Clean HTML-escaped characters from the description
+            $cleaned_description = str_replace(
+                ['&lt;', '&gt;', '&amp;'], 
+                ['<', '>', '&'], 
+                $product['description']
+            );
+            $item->addChild('g:description', htmlspecialchars(strip_tags($cleaned_description, '<p><br>')));
         }
 
         // make XML human readable
