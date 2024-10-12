@@ -183,7 +183,11 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
 
         // Output the XML content
         header('Content-Type: application/xml; charset=utf-8');
-        echo $xml->asXML();
+        $doc = new DOMDocument();
+        $doc->preserveWhiteSpace = false;
+        $doc->formatOutput = true;
+        $doc->loadXML($xml->asXML());
+        echo $doc->saveXML();
         exit;
     }
 
