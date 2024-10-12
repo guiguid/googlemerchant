@@ -1,14 +1,32 @@
-Prestashop Category ,Google Merchant Category
-Carte Mère,Appareils Ã©lectroniques > Circuits imprimÃ©s et composants de circuits > Circuits imprimÃ©s > Circuits imprimÃ©s pour ordinateurs > Cartes mÃ¨res
-COOLING,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > Composants d'ordinateur > PiÃ¨ces pour refroidisseurs d'ordinateur
-CPU,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > Composants d'ordinateur > Processeurs
-LED,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > Accessoires pour ordinateurs
-RESEAUX,Appareils Ã©lectroniques > RÃ©seaux
-MICRO,Appareils Ã©lectroniques > Audio > Composants audio > Microphones
-SOURIS,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > Composants d'ordinateur > PÃ©riphÃ©riques de saisie > Souris et trackballs
-CASQUES,Appareils Ã©lectroniques > Audio > Composants audio > Casques Audio & Ã‰couteurs > Casques
-Carte Graphiques,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > Composants d'ordinateur > Cartes E/S > Cartes graphiques et adaptateurs vidÃ©o
-POWER,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > Composants d'ordinateur > Alimentations pour ordinateurs
-RAM,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > MÃ©moire > RAM
-SSD,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > Composants d'ordinateur > PÃ©riphÃ©riques de stockage
-Boitiers,Appareils Ã©lectroniques > Accessoires Ã©lectroniques > Composants d'ordinateur > BoÃ®tiers pour ordinateurs de bureau et serveurs
+CPU,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU AMD AM4,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU INTEL GEN DDR4,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU INTEL GEN 2-3,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU INTEL GEN 4,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU AMD AM5,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+Carte Mère,Appareils électroniques > Circuits imprimés et composants de circuits > Circuits imprimés > Circuits imprimés pour ordinateurs > Cartes mères
+CM AMD AM4,Appareils électroniques > Circuits imprimés et composants de circuits > Circuits imprimés > Circuits imprimés pour ordinateurs > Cartes mères
+CM AMD AM5,Appareils électroniques > Circuits imprimés et composants de circuits > Circuits imprimés > Circuits imprimés pour ordinateurs > Cartes mères
+CM INTEL,Appareils électroniques > Circuits imprimés et composants de circuits > Circuits imprimés > Circuits imprimés pour ordinateurs > Cartes mères
+Carte Graphiques,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Cartes E/S > Cartes graphiques et adaptateurs vidéo
+GPU AMD,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Cartes E/S > Cartes graphiques et adaptateurs vidéo
+GPU NVIDIA,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Cartes E/S > Cartes graphiques et adaptateurs vidéo
+RAM,Appareils électroniques > Accessoires électroniques > Mémoire > RAM
+RAM DDR4,Appareils électroniques > Accessoires électroniques > Mémoire > RAM
+RAM DDR3,Appareils électroniques > Accessoires électroniques > Mémoire > RAM
+SSD,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 2T,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 60,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 128,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 1T,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 4T,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 512,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 256,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+COOLING,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Pièces pour refroidisseurs d'ordinateur
+LED,Appareils électroniques > Accessoires électroniques > Accessoires pour ordinateurs
+RESEAUX,Appareils électroniques > Réseaux
+MICRO,Appareils électroniques > Audio > Composants audio > Microphones
+SOURIS,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de saisie > Souris et trackballs
+CASQUES,Appareils électroniques > Audio > Composants audio > Casques Audio & Ecouteurs > Casques
+POWER,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Alimentations pour ordinateurs
+Boitiers,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Boîtiers pour ordinateurs de bureau et serveurs
