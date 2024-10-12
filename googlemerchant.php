@@ -178,15 +178,17 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
             $item->addChild('g:shipping_weight', htmlspecialchars($product['weight']) . ' kg');
         }
 
-        // Save the XML content to the feed.xml file
-        $xml->asXML($this->feedFile);
-
-        // Output the XML content
-        header('Content-Type: application/xml; charset=utf-8');
+        // make XML human readable
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = false;
         $doc->formatOutput = true;
         $doc->loadXML($xml->asXML());
+        
+        // Save the XML content to the feed.xml file
+        $doc->saveXML($this->feedFile);
+
+        // Output the XML content
+        header('Content-Type: application/xml; charset=utf-8');
         echo $doc->saveXML();
         exit;
     }
