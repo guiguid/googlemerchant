@@ -272,7 +272,11 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
                 LEFT JOIN ' . _DB_PREFIX_ . 'manufacturer m ON p.id_manufacturer = m.id_manufacturer
                 LEFT JOIN ' . _DB_PREFIX_ . 'category_lang cl ON p.id_category_default = cl.id_category AND cl.id_lang = ' . (int)$this->context->language->id . '
                 LEFT JOIN ' . _DB_PREFIX_ . 'stock_available st ON p.id_product = st.id_product
-                WHERE p.active = 1 and p.available_for_order = 1 and p.id_category_default IN (SELECT id_category FROM ' . _DB_PREFIX_ . 'category WHERE active = 1);';
+                WHERE p.active = 1 and p.available_for_order = 1 and p.id_category_default IN (
+                     SELECT cat.id_category 
+                     FROM `uphy_category` cat 
+                     LEFT JOIN uphy_category_lang cl ON p.id_category_default = cl.id_category AND cl.id_lang = ' . (int)$this->context->language->id . '
+                     WHERE active = 1 and  cl.name NOT LIKE "Interne");';
 
         return Db::getInstance()->executeS($sql);
     }
