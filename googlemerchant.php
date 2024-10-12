@@ -185,7 +185,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
         $doc->loadXML($xml->asXML());
         
         // Save the XML content to the feed.xml file
-        $doc->saveXML($this->feedFile);
+        $doc->save($this->feedFile);
 
         // Output the XML content
         header('Content-Type: application/xml; charset=utf-8');
