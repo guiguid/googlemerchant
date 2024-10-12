@@ -9,6 +9,8 @@ This module generates a Google Merchant Center compatible product feed from your
 
 ## Configuration
 
+Edit mapping.csv to make your category match the google categorie.
+Currency is EUR, change in the code
 After installation, configure the module to set the feed URL, which you can use in Google Merchant Center.
 
 ## Usage
