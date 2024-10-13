@@ -276,7 +276,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
                      SELECT cat.id_category 
                      FROM `uphy_category` cat 
                      LEFT JOIN uphy_category_lang cl ON p.id_category_default = cl.id_category AND cl.id_lang = ' . (int)$this->context->language->id . '
-                     WHERE active = 1 and  cl.name NOT LIKE "Interne");';
+                     WHERE active = 1 and  cl.name NOT LIKE "%Interne%");';
 
         return Db::getInstance()->executeS($sql);
     }
