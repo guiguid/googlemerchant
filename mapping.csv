@@ -1,58 +1,32 @@
-Prestashop Category ,Google Merchant Category
-Lighting,Hardware > Electrical & Solar > Lighting
-Computer,Electronics > Computers
-Homeware,Home & Garden > Home Improvement
-Power,Hardware > Electrical & Solar > Power Supplies
-Software,Electronics > Computers > Software
-Electrical,Hardware > Electrical & Solar
-Gaming,Electronics > Video Game Consoles
-Other,Miscellaneous
-Chairs,Home & Garden > Furniture > Chairs
-Just Arrived,Miscellaneous
-Upgrade Kits,Electronics > Computers > Computer Components
-Wireless Chargers,Electronics > Electronics Accessories > Power Adapters & Chargers
-Barebone Systems,Electronics > Computers > Desktop Computers
-Coming Soon,Miscellaneous
-Storage,Electronics > Computers > Data Storage
-Last Chance,Miscellaneous
-Consumer,Electronics > Electronics Components
-On Promotion,Miscellaneous
-Complete Systems,Electronics > Computers
-Office Monitors,Electronics > Computers > Monitors
-Consumer Electronics,Electronics
-Headphones,Electronics > Audio > Headphones
-Over-Ears,Electronics > Audio > Headphones
-In-Ears,Electronics > Audio > Headphones
-Personal Care,Health & Beauty > Personal Care
-Wall Chargers and Plugs,Electronics > Electronics Accessories > Power Adapters & Chargers
-Chassis,Electronics > Computers > Computer Components
-Bags and Covers,Electronics > Electronics Accessories > Cases & Bags
-N,Miscellaneous
-Wearables,Electronics > Wearable Technology
-Accessories,Electronics > Electronics Accessories
-Apple,Electronics > Computers > Computers by Brand
-Media and Streaming,Electronics > Media
-Projectors,Electronics > Video Projectors
-Switches,Electronics > Networking > Network Switches
-Charging Trolleys,Electronics > Computers > Laptop Accessories
-Spares and Accessories,Electronics > Electronics Accessories
-Air and Odour Control,Home & Garden > Household Supplies > Air Fresheners
-Headsets,Electronics > Audio > Headsets
-Portable Printing,Electronics > Printers > Portable Printers
-Printers,Electronics > Printers
-Printing Consumables,Electronics > Printers > Printer Supplies
-Cables,Electronics > Electronics Accessories > Cables
-USB Cables,Electronics > Electronics Accessories > Cables > USB Cables
-Scooters and Bikes,Sporting Goods > Outdoor Recreation > Scooters
-Bands and Watches,Jewelry > Watches
-Enterprise,Business & Industrial
-Backpacks,Luggage & Bags > Backpacks
-Mounts and Brackets,Hardware > Hardware Accessories
-Monitor Arms and Brackets,Electronics > Computers > Computer Components > Monitor Mounts & Stands
-Unboxed,Miscellaneous
-Adapters,Electronics > Electronics Accessories > Adapters
-Enclosures,Electronics > Computers > Computer Components > Drive Enclosures
-Power Cables,Electronics > Electronics Accessories > Cables > Power Cables
-Keyboard Accessories,Electronics > Computers > Computer Accessories > Keyboard Accessories
-Adapters and Converters,Electronics > Electronics Accessories > Adapters
-Power Supplies,Hardware > Electrical & Solar > Power Supplies
+CPU,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU AMD AM4,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU INTEL GEN DDR4,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU INTEL GEN 2-3,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU INTEL GEN 4,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+CPU AMD AM5,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Processeurs
+Mother Board,Appareils électroniques > Circuits imprimés et composants de circuits > Circuits imprimés > Circuits imprimés pour ordinateurs > Cartes mères
+MB AMD AM4,Appareils électroniques > Circuits imprimés et composants de circuits > Circuits imprimés > Circuits imprimés pour ordinateurs > Cartes mères
+MB AMD AM5,Appareils électroniques > Circuits imprimés et composants de circuits > Circuits imprimés > Circuits imprimés pour ordinateurs > Cartes mères
+MB INTEL,Appareils électroniques > Circuits imprimés et composants de circuits > Circuits imprimés > Circuits imprimés pour ordinateurs > Cartes mères
+Graphics Cards,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Cartes E/S > Cartes graphiques et adaptateurs vidéo
+GPU AMD,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Cartes E/S > Cartes graphiques et adaptateurs vidéo
+GPU NVIDIA,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Cartes E/S > Cartes graphiques et adaptateurs vidéo
+RAM,Appareils électroniques > Accessoires électroniques > Mémoire > RAM
+RAM DDR4,Appareils électroniques > Accessoires électroniques > Mémoire > RAM
+RAM DDR3,Appareils électroniques > Accessoires électroniques > Mémoire > RAM
+SSD,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 2T,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 60,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 128,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 1T,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 4T,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 512,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+SSD 256,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de stockage
+COOLING,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Pièces pour refroidisseurs d'ordinateur
+LED,Appareils électroniques > Accessoires électroniques > Accessoires pour ordinateurs
+RESEAUX,Appareils électroniques > Réseaux
+MICRO,Appareils électroniques > Audio > Composants audio > Microphones
+SOURIS,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Périphériques de saisie > Souris et trackballs
+CASQUES,Appareils électroniques > Audio > Composants audio > Casques Audio & Ecouteurs > Casques
+POWER,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Alimentations pour ordinateurs
+Boitiers,Appareils électroniques > Accessoires électroniques > Composants d'ordinateur > Boîtiers pour ordinateurs de bureau et serveurs

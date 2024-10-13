@@ -44,8 +44,8 @@ class googlemerchant extends Module
     {
         $this->name = 'googlemerchant';
         $this->tab = 'administration';
-        $this->version = '1.0.0';
-        $this->author = 'Marco Zagato';
+        $this->version = '2.0.0';
+        $this->author = 'Guillaume DELVIT based on Marco Zagato v1.0.0';
         $this->need_instance = 0;
         $this->bootstrap = true;
 
@@ -141,7 +141,7 @@ class googlemerchant extends Module
             return false;
         }
 
-        $xml = new SimpleXMLElement('<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel></channel></rss>');
+        $xml = new SimpleXMLElement('<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"></rss>');
 $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
         if (!isset($channel)) {
             $channel = $xml->addChild('g:channel');
@@ -149,41 +149,46 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
 
         foreach ($products as $product) {
             $item = $channel->addChild('g:item');
-            $item->addChild('g:id', htmlspecialchars($product['id_product']));
-            $item->addChild('g:title', htmlspecialchars($product['name']));
-            $item->addChild('g:link', htmlspecialchars($this->context->link->getProductLink($product['id_product'], $product['link_rewrite'])));
-            
-            // Clean HTML-escaped characters from the description
+            $item->addChild('title', htmlspecialchars($product['name']));
+            $item->addChild('link', htmlspecialchars($this->context->link->getProductLink($product['id_product'], $product['link_rewrite'])));
+                                    // Clean HTML-escaped characters from the description
             $cleaned_description = str_replace(
                 ['&lt;', '&gt;', '&amp;'], 
                 ['<', '>', '&'], 
                 $product['description']
             );
-            $item->addChild('g:description', htmlspecialchars(strip_tags($cleaned_description, '<p><br>')));
-            
+            $item->addChild('description', htmlspecialchars(strip_tags($cleaned_description, '<p><br>')));
+            $item->addChild('xmlns:g:id', htmlspecialchars($product['id_product']));            
             $this->handlePrice($product['price'], $item);
             $this->handleImageLink($product, $item);
             $this->handleAvailability($product['quantity'], $item);
 
-            $item->addChild('g:brand', htmlspecialchars($product['manufacturer_name']) ?: 'Unknown');
+            $item->addChild('xmlns:g:brand', htmlspecialchars($product['manufacturer_name']) ?: 'Unknown');
             if (!empty($product['ean13']) && strtolower($product['ean13']) != 'null') {
-                $item->addChild('g:gtin', htmlspecialchars($product['ean13']));
+                $item->addChild('xmlns:g:gtin', htmlspecialchars($product['ean13']));
             }
-            $item->addChild('g:mpn', htmlspecialchars($product['id_product']));
-            $item->addChild('g:condition', 'new');
+            $item->addChild('xmlns:g:mpn', htmlspecialchars($product['id_product']));
+            $item->addChild('xmlns:g:condition', htmlspecialchars($product['condition']));
 
             // Additional fields expected by Google
             
-            $item->addChild('g:google_product_category', $this->getGoogleCategory($product['id_category_default']));
-            $item->addChild('g:shipping_weight', htmlspecialchars($product['weight']) . ' kg');
+            $item->addChild('xmlns:g:google_product_category', $this->getGoogleCategory($product['id_category_default']));
+            $item->addChild('xmlns:g:shipping_weight', htmlspecialchars($product['weight']) . ' kg');
+
         }
 
+        // make XML human readable
+        $doc = new DOMDocument();
+        $doc->preserveWhiteSpace = false;
+        $doc->formatOutput = true;
+        $doc->loadXML($xml->asXML());
+        
         // Save the XML content to the feed.xml file
-        $xml->asXML($this->feedFile);
-
+        $doc->save($this->feedFile);
+        
         // Output the XML content
         header('Content-Type: application/xml; charset=utf-8');
-        echo $xml->asXML();
+        echo $doc->saveXML();
         exit;
     }
 
@@ -193,7 +198,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
         log_debug('Adding price to XML: ' . $formatted_price);
         try {
             if (!empty($formatted_price)) {
-                $item->addChild('g:price', htmlspecialchars($formatted_price));
+                $item->addChild('xmlns:g:price', htmlspecialchars($formatted_price));
             } else {
                 log_debug('Price not added: ' . $formatted_price);
             }
@@ -211,7 +216,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
                 $main_image_link = 'https://via.placeholder.com/300'; // Placeholder image URL
             }
             log_debug('Adding image_link to XML: ' . htmlspecialchars($main_image_link));
-            $item->addChild('g:image_link', htmlspecialchars($main_image_link));
+            $item->addChild('xmlns:g:image_link', htmlspecialchars($main_image_link));
         } catch (Exception $e) {
             log_debug('Failed to add image_link: ' . $e->getMessage());
         }
@@ -222,7 +227,7 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
         $availability = $quantity > 0 ? 'in stock' : 'out of stock';
         log_debug('Adding availability to XML: ' . $availability);
         try {
-            $item->addChild('g:availability', $availability);
+            $item->addChild('xmlns:g:availability', $availability);
         } catch (Exception $e) {
             log_debug('Failed to add availability: ' . $availability);
         }
@@ -260,13 +265,18 @@ $xml->registerXPathNamespace('g', 'http://base.google.com/ns/1.0');
 
     public function getProducts()
     {
-        $sql = 'SELECT p.id_product, pl.name, pl.description, p.price, i.id_image, pl.link_rewrite, m.name as manufacturer_name, p.ean13, p.quantity, cl.name as category_name, p.weight, p.id_category_default
+        $sql = 'SELECT p.id_product, pl.name, pl.description, p.price, i.id_image, pl.link_rewrite, m.name as manufacturer_name, p.ean13, st.quantity, cl.name as category_name, p.weight, p.id_category_default, p.condition
                 FROM ' . _DB_PREFIX_ . 'product p
                 JOIN ' . _DB_PREFIX_ . 'product_lang pl ON p.id_product = pl.id_product AND pl.id_lang = ' . (int)$this->context->language->id . '
                 LEFT JOIN ' . _DB_PREFIX_ . 'image i ON p.id_product = i.id_product AND i.cover = 1
                 LEFT JOIN ' . _DB_PREFIX_ . 'manufacturer m ON p.id_manufacturer = m.id_manufacturer
                 LEFT JOIN ' . _DB_PREFIX_ . 'category_lang cl ON p.id_category_default = cl.id_category AND cl.id_lang = ' . (int)$this->context->language->id . '
-                WHERE p.active = 1';
+                LEFT JOIN ' . _DB_PREFIX_ . 'stock_available st ON p.id_product = st.id_product
+                WHERE p.active = 1 and p.available_for_order = 1 and p.id_category_default IN (
+                     SELECT cat.id_category 
+                     FROM `uphy_category` cat 
+                     LEFT JOIN uphy_category_lang cl ON p.id_category_default = cl.id_category AND cl.id_lang = ' . (int)$this->context->language->id . '
+                     WHERE active = 1 and  cl.name NOT LIKE "Interne");';
 
         return Db::getInstance()->executeS($sql);
     }
